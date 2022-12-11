@@ -1,0 +1,46 @@
+from tkinter import *
+
+count = 0
+
+def onAdd():
+    global count
+    count += 1
+    labelCount['text'] = str(count)
+    
+def onSub():
+    global count
+    if count > 0:
+        count -= 1
+        labelCount['text'] = str(count)
+    
+win = Tk()
+
+win.title('카운터')
+win.geometry('250x200')
+
+win.columnconfigure(0, weight=1)
+win.columnconfigure(1, weight=1)
+win.rowconfigure(0, weight=1)
+
+labelCount = Label(text='0', 
+        bg='beige', 
+    font=('맑은 고딕', 60))
+labelCount.grid(column=0, row=0,
+    columnspan=2,
+    padx=8, pady=8,
+    sticky=N+E+W+S)
+
+btnAdd = Button(text='증가', 
+    command=onAdd)
+btnAdd.grid(column=0, row=1,
+    padx=8, pady=8,
+    sticky=E+W)
+
+btnSub = Button(text='감소', 
+    command=onSub)
+btnSub.grid(column=1, row=1,
+    padx=8, pady=8,
+    sticky=E+W)
+
+
+win.mainloop()
